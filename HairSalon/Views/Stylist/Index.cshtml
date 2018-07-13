@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hair Salon</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-  </head>
-  <ul>
-  @foreach (var stylists in Model)
-  {
-    <li>@stylists.GetName()</li>
-  }
-</ul>
+<head>
+  <title>Hair Salon</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<div class="Jumbotrom">
+  <h1>Stylists</h1>
+</div>
+@foreach (var stylists in Model)
+{
+  <div class="card" style="width: 18rem; background-color:#b3c2d8">
+    <div class="card-body">
+      <h5 class="card-title">@stylists.GetName()</h5>
+      <h6 class="card-subtitle mb-2 text-muted">@stylists.GetSpecialty()</h6>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+}
 
 </html>
