@@ -37,6 +37,23 @@ namespace HairSalon.Tests
 
     CollectionAssert.AreEqual(result, test);
   }
+
+  [TestMethod]
+  public void DoStylistHaveID()
+  {
+    //arrange
+    Stylist newStylist = new Stylist("Dana", "trims");
+    newStylist.Save();
+
+    //act
+    Stylist secoundStylist = Stylist.GetAll()[0];
+
+    int result = newStylist.GetId();
+    int test = secoundStylist.GetId();
+
+    //assert
+    Assert.AreEqual(result, test);
+  }
   public void Dispose()
     {
       Stylist.DeleteAll();

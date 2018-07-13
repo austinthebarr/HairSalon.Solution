@@ -109,12 +109,12 @@ namespace HairSalon.Models
       cmd.CommandText = @"SELECT * FROM stylists WHERE id = (@searchId);";
 
       MySqlParameter searchId = new MySqlParameter();
-      searchId.ParameterName = "@searchId"
+      searchId.ParameterName = "@searchId";
       searchId.Value = id;
       cmd.Parameters.Add(searchId);
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
-      int Stylistid = 0;
+      int StylistId = 0;
       string StylistName = "";
       string StylistSpecialty = "";
 
