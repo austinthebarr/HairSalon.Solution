@@ -5,13 +5,16 @@ using System;
 
 namespace HairSalon.Tests
 {
+
   [TestClass]
   public SylistTests : IDisposable
   {
-    DBConfiguration.ConnectionString = "server=localhost; user id=root;password=root;port=8889;database=austin_barr_test;";
-  }
+    public SylistTests()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=austin_barr_test;";
+    }
 
-  
+
   public void Dispose()
     {
       Sylist.DeleteAll();
