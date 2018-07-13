@@ -14,7 +14,7 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Item()
+    public void Equals_ReturnsTrueINameIS_SAME()
     {
       // Arrange, Act
       Client firstClient = new Client("joe",1);
@@ -22,6 +22,31 @@ namespace HairSalon.Tests
 
       // Assert
       Assert.AreEqual(firstClient, secondClient);
+    }
+
+    [TestMethod]
+    public void GetAll_ClientsEmpty()
+    {
+      //act
+      int result = Client.GetAll().Count;
+
+      //assert
+      Assert.AreEqual(0, result);
+    }
+
+    [TestMethod]
+    public void ClientsSaveToDatabase_Yes()
+    {
+      //arrange
+      Client newClient = new Client("Buzz", 1);
+      newClient.Save();
+
+
+      //act
+      List<Client> result = Client.GetAll();
+      List<Client> test = new List<Client>{newClient};
+
+      CollectionAssert.AreEqual(result, test);
     }
 
     public void Dispose()
