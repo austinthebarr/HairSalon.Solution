@@ -40,11 +40,13 @@ namespace HairSalon.Tests
       //arrange
       Client newClient = new Client("Buzz", 1);
       newClient.Save();
+      Client oldClient = new Client("Dana", 2);
+      oldClient.Save();
 
 
       //act
       List<Client> result = Client.GetAll();
-      List<Client> test = new List<Client>{newClient};
+      List<Client> test = new List<Client>{newClient, oldClient};
 
       CollectionAssert.AreEqual(result, test);
     }
