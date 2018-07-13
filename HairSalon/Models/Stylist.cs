@@ -52,11 +52,19 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
 
-      var cmd = conn.CreateCommand as MySqlCommand;
+      var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"INSERT INTO stylists (name, specialty) VALUES (@name, @specialty);";
 
-      cmd.Parameters.Add(new MySqlParameter(@name, _name));
-      cmd.Parameters.Add(new MySqlParameter(@specialty, _specialty));
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@name";
+      name.Value = this._name;
+      cmd.Parameters.Add(name);
+
+      MySqlParameter specialty = new MySqlParameter();
+      specialty.ParameterName = "@specialty";
+      specialty.Value = this._specialty;
+      cmd.Parameters.Add(specialty);
+
 
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
@@ -68,21 +76,21 @@ namespace HairSalon.Models
       }
     }
 
-    public List<Stylist> GetAll()
+    public static List<Stylist> GetAll()
     {
       List<Stylist> allStylists = new List<Stylist> {};
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM stylists;";
-      var rdr = cmd.ExecuteReader as MySqlDataReader;
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
-        int StylistId = rdr.GetInt32(0)
-        string SylistName = rdr.GetString(1)
-        string StylistSpecialty = rdr.GetSpecialty(2)
-        Sylist newStylist = new Stylist(StylistName, StylistSpecialty, StylistId);
-        allStylist.Add(newStylist);
+        int StylistId = rdr.GetInt32(0);
+        string StylistName = rdr.GetString(1);
+        string StylistSpecialty = rdr.GetString(2);
+        Stylist newStylist = new Stylist(StylistName, StylistSpecialty, StylistId);
+        allStylists.Add(newStylist);
       }
 
       conn.Close();
@@ -90,7 +98,21 @@ namespace HairSalon.Models
       {
         conn.Dispose();
       }
-      return allStylist;
+      return allStylists;
+    }
+
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM stylists;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
   }
 }

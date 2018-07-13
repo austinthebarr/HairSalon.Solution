@@ -7,17 +7,27 @@ namespace HairSalon.Tests
 {
 
   [TestClass]
-  public SylistTests : IDisposable
+  public class StylistTests : IDisposable
   {
-    public SylistTests()
+    public StylistTests()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=austin_barr_test;";
     }
 
+  [TestMethod]
+  public void GetAll_Stylists_EmptyList_0()
+  {
+    //act
+    int result = Stylist.GetAll().Count;
 
+    //assert
+    Assert.AreEqual(0, result);
+
+  }
   public void Dispose()
     {
-      Sylist.DeleteAll();
-      Client.DeleteAll();
+      Stylist.DeleteAll();
+      // Client.DeleteAll();
     }
+  }
 }
