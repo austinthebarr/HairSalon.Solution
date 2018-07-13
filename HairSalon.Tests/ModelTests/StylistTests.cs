@@ -72,6 +72,23 @@ namespace HairSalon.Tests
 
   }
 
+  [TestMethod]
+  public void CanIFindaStylistById_InDatabase_Find2()
+  {
+    //arrange
+    Stylist testStylist = new Stylist("Dana", "trims");
+    testStylist.Save();
+    Stylist test2Stylist = new Stylist("Peter", "buzz-cut");
+    test2Stylist.Save();
+
+    //act
+    Stylist foundStylist = Stylist.Find(test2Stylist.GetId());
+
+    //assert
+    Assert.AreEqual(foundStylist, test2Stylist);
+
+  }
+
   public void Dispose()
     {
       Stylist.DeleteAll();
