@@ -9,11 +9,13 @@ namespace HairSalon.Models
   {
     private int _id;
     private string _name;
+    private int _stylistId;
 
-    public Client(string name, int id = 0)
+    public Client(string name, int stylistId, int id = 0)
     {
       _id = id;
       _name = name;
+      _stylistId = stylistId;
     }
 
     public override bool Equals(System.Object otherClient)
@@ -25,7 +27,10 @@ namespace HairSalon.Models
       else
       {
         Client newClient = (Client) otherClient;
-        return this.GetId().Equals(newClient.GetId());
+        bool idEquality = (this.GetId() == newClient.GetId());
+        bool nameEquality = (this.GetName() == newClient.GetName());
+        bool stylistIdEquality = (this.GetStylistId() == newClient.GetStylistId());
+        return(idEquality && nameEquality);
       }
     }
     public override int GetHashCode()
@@ -41,6 +46,29 @@ namespace HairSalon.Models
     {
       return _name;
     }
+    public int GetStylistId()
+    {
+      return _stylistId;
+    }
 
+    public void Save()
+    {
+      // MySqlConnection conn = DB.Connection();
+      // conn.Open();
+      // var cmd = conn.CreateCommand() as MySqlCommand;
+      // cmd.CommandText = @"INSERT INTO clients (name, )";
+    }
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM clients;";
+      conn.Close();
+      if (conn !=null)
+      {
+        conn.Dispose();
+      }
+    }
   }
 }
