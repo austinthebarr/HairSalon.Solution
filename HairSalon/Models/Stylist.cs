@@ -87,8 +87,16 @@ namespace HairSalon.Models
       while(rdr.Read())
       {
         int StylistId = rdr.GetInt32(0);
-        string StylistName = rdr.GetString(1);
-        string StylistSpecialty = rdr.GetString(2);
+        string StylistName = "";
+        if(!rdr.IsDBNull(1))
+        {
+         StylistName = rdr.GetString(1);
+        }
+        string StylistSpecialty = "";
+        if(!rdr.IsDBNull(2))
+        {
+          StylistSpecialty = rdr.GetString(2);
+        }
         Stylist newStylist = new Stylist(StylistName, StylistSpecialty, StylistId);
         allStylists.Add(newStylist);
       }

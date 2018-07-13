@@ -17,7 +17,13 @@ namespace HairSalon.Controllers
     {
       Stylist newStylist = new Stylist(newName, newSpecialty);
       newStylist.Save();
-      return RedirectToAction("Index")
+      return RedirectToAction("Index");
+    }
+
+    [HttpGet("/stylist/index")]
+    public ActionResult Index()
+    {
+      return View(Stylist.GetAll());
     }
   }
 }
