@@ -1,0 +1,6 @@
+<h1>@Model.GetName()'s Clients</h1>
+@foreach(var clients in Model.GetClients())
+{
+<li>@clients.GetName()</li>
+}
+<a href="/stylist/index">Back to Stylists</a>

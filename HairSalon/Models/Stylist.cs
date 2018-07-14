@@ -145,7 +145,7 @@ namespace HairSalon.Models
     public List<Client> GetClients()
     {
       List<Client> allStylistClients = new List<Client>{};
-      MySqlConnection conn = DB.Connection;
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = @stylist_id;";
@@ -158,13 +158,13 @@ namespace HairSalon.Models
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
-        int clientId = GetInt32(0);
-        string clientName = GetString(1);
-        int clientStylistId = GetInt32(2);
+        int clientId = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        int clientStylistId = rdr.GetInt32(2);
         Client newClient = new Client(clientName, clientStylistId, clientId);
-        allStylistClients.Add(newClient)
+        allStylistClients.Add(newClient);
       }
-      conn.close();
+      conn.Close();
       if(conn != null)
       {
         conn.Dispose();
