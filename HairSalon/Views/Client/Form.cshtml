@@ -12,7 +12,7 @@
   <select class="selectStylist" name="stylist">
     @foreach (var stylists in Model)
     {
-    <option value="stylists.GetId()">@stylists.GetName()</option>
+    <option value="@stylists.GetId()">@stylists.GetName()</option>
     }
   </select>
   <button type="submit">Submit</button>
