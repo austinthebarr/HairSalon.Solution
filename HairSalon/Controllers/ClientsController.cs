@@ -19,5 +19,11 @@ namespace HairSalon.Controllers
       firstClient.Save();
       return RedirectToAction("Index");
     }
+
+    [HttpGet("/client/index")]
+    public ActionResult Index()
+    {
+      return View(Client.GetAll());
+    }
   }
 }

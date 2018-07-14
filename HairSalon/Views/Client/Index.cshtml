@@ -5,17 +5,16 @@
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 </head>
 <div class="jumbotron">
-  <h1>Stylists</h1>
+  <h1>Clients</h1>
 </div>
-@foreach (var stylists in Model)
+@foreach (var clients in Model)
 {
   <div class="card" style="width: 18rem; background-color:#b3c2d8">
     <div class="card-body">
-      <h5 class="card-title">@stylists.GetName()</h5>
-      <h6 class="card-subtitle mb-2 text-muted">@stylists.GetSpecialty()</h6>
-      <a href="/stylist/@stylists.GetId()" class="card-link">Clients</a>
+      <h5 class="card-title">@clients.GetName()</h5>
     </div>
+    <a href="/stylist/index">Stylists</a>
   </div>
 }
-<a href="/">Back to Home</a>
+
 </html>
