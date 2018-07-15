@@ -1,0 +1,43 @@
+body
+{
+  background-color: #F7E3AF;
+}
+
+h1, h2
+{
+  text-align: center;
+}
+h1.bigFont
+{
+  font-family: 'Knewave', cursive;
+  font-size: 78px;
+}
+
+h2
+{
+  font-family:'Quicksand', sans-serif;
+}
+
+.jumbotron
+{
+  background-color: #E5FCF5;
+}
+
+.buttons
+{
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  margin-left: 20px;
+
+}
+
+.btn-lg
+{
+  background-color: #000001;
+  color: #F1FFFA;
+  font-weight: 600;
+  font-size: 32px;
+  font-family: 'Shadows Into Light', cursive;
+  border-radius: 15px;
+}

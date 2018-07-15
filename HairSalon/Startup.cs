@@ -28,6 +28,7 @@ namespace HairSalon
       app.UseDeveloperExceptionPage();
       app.UseMvc(routes =>
       {
+        app.UseStaticFiles();
         routes.MapRoute(
         name: "default",
         template: "{controller=Home}/{action=Index}/{id?}");

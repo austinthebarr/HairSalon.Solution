@@ -4,6 +4,7 @@ namespace HairSalon.Controllers
 {
   public class HomeController : Controller
   {
+    [Produces("text/html")]
     [HttpGet("/")]
     public ActionResult Index()
     {
