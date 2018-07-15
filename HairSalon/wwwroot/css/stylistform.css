@@ -1,0 +1,61 @@
+body
+{
+  background-color: #5D5179;
+  color: #F1FFFA;
+}
+
+h1
+{
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 78px;
+  text-align: center;
+  margin-bottom: 46px;
+  margin-top: 24px;
+  text-decoration: underline wavy;
+}
+label
+{
+  font-family:'Quicksand', sans-serif;
+  margin-right: 12px;
+  margin-left: 12px;
+  font-size: 24px;
+}
+
+input
+{
+  border-radius: 10px;
+  color: #040F16;
+  font-family:'Quicksand', sans-serif;
+  font-weight: 600;
+}
+
+button
+{
+  background-color: #80DED9;
+  border-radius: 20px;
+  color: #080705;
+  font-family: 'Knewave', cursive;
+}
+.photo
+{
+float: right;
+margin-right: 100px;
+border: solid 2px #080705;
+}
+
+a
+{
+  margin-left: 12px;
+  font-family: 'Knewave', cursive;
+  color: #080705;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+a:hover
+{
+  border-bottom: solid 1px #F95738;
+  color: #080705;
+  text-decoration: none;
+  cursor: crosshair;
+}
