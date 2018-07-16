@@ -3,18 +3,24 @@
 <head>
   <title>Hair Salon</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link rel="stylesheet" type="text/css" href="~/css/clientpage.css" />
+  <link href="https://fonts.googleapis.com/css?family=Knewave|Quicksand|Shadows+Into+Light" rel="stylesheet">
 </head>
 <div class="jumbotron">
   <h1>Clients</h1>
 </div>
+<div class="clients">
 @foreach (var clients in Model)
 {
-  <div class="card" style="width: 18rem; background-color:#b3c2d8">
+
+  <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">@clients.GetName()</h5>
     </div>
     <a href="/stylist/index">Stylists</a>
   </div>
+
 }
+</div>
 
 </html>

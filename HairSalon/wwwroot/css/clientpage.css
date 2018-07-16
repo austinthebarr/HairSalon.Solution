@@ -1,0 +1,32 @@
+body
+{
+  background-color: #E6DBD0;
+}
+.jumbotron
+{
+  background-color: #B97375;
+  color: #39393A;
+}
+h1
+{
+  font-family: 'Knewave', cursive;
+  font-size: 78px;
+  text-align: center;
+}
+
+.clients
+{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 25px;
+  margin-left: 20px;
+}
+
+.card
+{
+  margin: 10px 10px;
+  padding: 15px 15px;
+  background-color: #1AC8ED;
+  font-family:'Quicksand', sans-serif;
+}
