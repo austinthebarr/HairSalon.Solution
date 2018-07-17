@@ -1,6 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Stylist</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="~/css/stylistform.css" />
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Quicksand|Shadows+Into+Light" rel="stylesheet">
+  </head>
+
 <h1>@Model.GetName()'s Clients</h1>
 @foreach(var clients in Model.GetClients())
 {
 <li>@clients.GetName()</li>
 }
 <a href="/stylist/index">Back to Stylists</a>
+</html>

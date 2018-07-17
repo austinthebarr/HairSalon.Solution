@@ -59,3 +59,17 @@ a:hover
   text-decoration: none;
   cursor: crosshair;
 }
+
+li
+{
+  font-family:'Quicksand', sans-serif;
+  margin-right: 12px;
+  margin-left: 12px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.list
+{
+  text-align: center;
+}
