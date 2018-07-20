@@ -13,6 +13,12 @@ namespace HairSalon.Tests
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=austin_barr_test;";
     }
 
+    public void Dispose()
+      {
+        // Stylist.DeleteAll();
+        // Client.DeleteAll();
+      }
+
     [TestMethod]
     public void Equals_ReturnsTrueINameIS_SAME()
     {
