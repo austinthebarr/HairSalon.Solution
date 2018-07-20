@@ -1,0 +1,7 @@
+<h1>Bangs</h1>
+<h2>Delete Client: @Model.GetName()</h2>
+<h3>Are you sure you want to Delete @Model.GetName()</h3>
+<form action="/client/@Model.GetId()/Delete" method="post">
+    <button type="submit">Yes, Delete</button>
+</form>
+<h4><a href="/Index">Return to Client List</a></h4>
