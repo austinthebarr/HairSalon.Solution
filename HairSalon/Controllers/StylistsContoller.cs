@@ -34,6 +34,7 @@ namespace HairSalon.Controllers
       return View(currentStylist);
     }
 
+    //Deletes Specific Stylist by ID
     [HttpGet("/stylist/{id}/delete")]
     public ActionResult Delete(int id)
     {
@@ -46,6 +47,20 @@ namespace HairSalon.Controllers
     {
       Stylist thisStylist = Stylist.Find(id);
       thisStylist.DeleteStylist();
+      return RedirectToAction("Index");
+    }
+
+    //Deletes All Stylists and their clients
+    [HttpGet("/stylist/deleteAll")]
+      public ActionResult DeleteAll()
+    {
+      return View();
+    }
+
+    [HttpPost("/stylist/deleteAll")]
+    public ActionResult DeleteAllStylists()
+    {
+      Stylist.DeleteAll();
       return RedirectToAction("Index");
     }
   }
