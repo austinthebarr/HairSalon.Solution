@@ -103,12 +103,12 @@ namespace HairSalon.Models
         Client newClient = new Client(ClientName, ClientSylistId, ClientId);
         allClients.Add(newClient);
       }
-       conn.Close();
-       if (conn != null)
-       {
-         conn.Dispose();
-       }
-       return allClients;
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allClients;
     }
 
     public static Client Find(int id)
@@ -175,6 +175,60 @@ namespace HairSalon.Models
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn !=null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public void Edit(string newName)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @searchId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@newName";
+      name.Value = newName;
+      cmd.Parameters.Add(name);
+
+      cmd.ExecuteNonQuery();
+      _name = newName;
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public void EditStylist(int newId)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET stylist_id = @updatedId WHERE id = @searchId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter updatedId = new MySqlParameter();
+      updatedId.ParameterName = "@updatedId";
+      updatedId.Value = newId;
+      cmd.Parameters.Add(updatedId);
+
+      cmd.ExecuteNonQuery();
+      _stylistId = newId;
+
+      conn.Close();
+      if (conn != null)
       {
         conn.Dispose();
       }
