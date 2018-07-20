@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList", "ToDoList.csproj", "{A66495D2-374E-4DC3-897A-6C13C7059049}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairSalon", "HairSalon.csproj", "{A66495D2-374E-4DC3-897A-6C13C7059049}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
