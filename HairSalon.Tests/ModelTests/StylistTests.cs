@@ -107,6 +107,22 @@ namespace HairSalon.Tests
     Assert.IsTrue(outputList.Count == 1);
     CollectionAssert.AreEqual(expectedList, outputList);
   }
+  [TestMethod]
+   public void Edit_UpdatesNameOfStylist()
+   {
+     //Arrange
+     Stylist newStylist = new Stylist("Dan", "color");
+     newStylist.Save();
+
+     //Act
+     string newName = "Peter";
+     newStylist.Edit(newName);
+
+     string result = Stylist.Find(newStylist.GetId()).GetName();
+
+     //Assert
+     Assert.AreEqual(newName, result);
+   }
 
   public void Dispose()
     {
