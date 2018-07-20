@@ -52,5 +52,21 @@ namespace HairSalon.Tests
 
       CollectionAssert.AreEqual(result, test);
     }
+    [TestMethod]
+    public void DoSpecialtyHaveID()
+    {
+      //arrange
+      Specialty newSpecialty = new Specialty("trims");
+      newSpecialty.Save();
+
+      //act
+      Specialty secoundSpecialty = Specialty.GetAll()[0];
+
+      int result = newSpecialty.GetId();
+      int test = secoundSpecialty.GetId();
+
+      //assert
+      Assert.AreEqual(result, test);
+    }
   }
 }
