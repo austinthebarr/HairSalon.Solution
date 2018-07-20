@@ -33,5 +33,20 @@ namespace HairSalon.Controllers
       List<Client> clientList = currentStylist.GetClients();
       return View(currentStylist);
     }
+
+    [HttpGet("/stylist/{id}/delete")]
+    public ActionResult Delete(int id)
+    {
+      Stylist thisStylist = Stylist.Find(id);
+      return View(thisStylist) ;
+    }
+
+    [HttpPost("/stylist/{id}/delete")]
+    public ActionResult DeleteStylist(int id)
+    {
+      Stylist thisStylist = Stylist.Find(id);
+      thisStylist.DeleteStylist();
+      return RedirectToAction("Index");
+    }
   }
 }

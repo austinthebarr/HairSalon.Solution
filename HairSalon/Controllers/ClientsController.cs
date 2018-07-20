@@ -34,7 +34,7 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/client/{id}/delete")]
-    public ActionResult DeleteItem(int id)
+    public ActionResult DeleteClient(int id)
     {
       Client thisClient = Client.Find(id);
       thisClient.DeleteClient();
