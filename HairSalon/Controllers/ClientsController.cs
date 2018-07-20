@@ -54,5 +54,13 @@ namespace HairSalon.Controllers
       Client.DeleteAll();
       return RedirectToAction("Index");
     }
+
+    //Info For Client
+    [HttpGet("/client/{id}/info")]
+      public ActionResult Info(int id)
+    {
+      Client thisClient = Client.Find(id);
+      return View(thisClient);
+    }
   }
 }
