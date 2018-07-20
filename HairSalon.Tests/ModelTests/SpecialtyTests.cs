@@ -15,8 +15,7 @@ namespace HairSalon.Tests
 
     public void Dispose()
       {
-        // Stylist.DeleteAll();
-        // Client.DeleteAll();
+        Specialty.DeleteAll();
       }
 
     [TestMethod]
@@ -28,6 +27,16 @@ namespace HairSalon.Tests
 
       // Assert
       Assert.AreEqual(firstSpecialty, secondSpecialty);
+    }
+
+    [TestMethod]
+    public void SpecialtiesEmpty_GetAllWorks()
+    {
+      //act
+      int result = Specialty.GetAll().Count;
+
+      //assert
+      Assert.AreEqual(0, result);
     }
   }
 }
