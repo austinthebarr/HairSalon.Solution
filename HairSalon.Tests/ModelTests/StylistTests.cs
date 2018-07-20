@@ -28,7 +28,7 @@ namespace HairSalon.Tests
   public void SavesToDataBase_Yes()
   {
     //arrange
-    Stylist newStylist = new Stylist("Peter", "buzz-cut");
+    Stylist newStylist = new Stylist("Peter");
     newStylist.Save();
 
     //act
@@ -42,7 +42,7 @@ namespace HairSalon.Tests
   public void DoStylistHaveID()
   {
     //arrange
-    Stylist newStylist = new Stylist("Dana", "trims");
+    Stylist newStylist = new Stylist("Dana");
     newStylist.Save();
 
     //act
@@ -59,9 +59,9 @@ namespace HairSalon.Tests
   public void CanIFindaStylistById_InDatabase_Find()
   {
     //arrange
-    Stylist testStylist = new Stylist("Dana", "trims");
+    Stylist testStylist = new Stylist("Dana");
     testStylist.Save();
-    Stylist test2Stylist = new Stylist("Peter", "buzz-cut");
+    Stylist test2Stylist = new Stylist("Peter");
     test2Stylist.Save();
 
     //act
@@ -76,9 +76,9 @@ namespace HairSalon.Tests
   public void CanIFindaStylistById_InDatabase_Find2()
   {
     //arrange
-    Stylist testStylist = new Stylist("Dana", "trims");
+    Stylist testStylist = new Stylist("Dana");
     testStylist.Save();
-    Stylist test2Stylist = new Stylist("Peter", "buzz-cut");
+    Stylist test2Stylist = new Stylist("Peter");
     test2Stylist.Save();
 
     //act
@@ -92,9 +92,9 @@ namespace HairSalon.Tests
   public void CanIDeleteaSpecificStylistbyID()
   {
     //Arrange
-    Stylist newStylist1 = new Stylist("Donna", "Coloring");
+    Stylist newStylist1 = new Stylist("Donna");
     newStylist1.Save();
-    Stylist newStylist2 = new Stylist("Patti", "LongHair");
+    Stylist newStylist2 = new Stylist("Patti");
     newStylist2.Save();
     Assert.IsTrue(Stylist.GetAll().Count == 2);
 
@@ -111,7 +111,7 @@ namespace HairSalon.Tests
    public void Edit_UpdatesNameOfStylist()
    {
      //Arrange
-     Stylist newStylist = new Stylist("Dan", "color");
+     Stylist newStylist = new Stylist("Dan");
      newStylist.Save();
 
      //Act
@@ -128,7 +128,7 @@ namespace HairSalon.Tests
     public void AddaStylistToASpecialty()
     {
       //Arrange
-      Stylist testStylist = new Stylist("Peter", "buzz");
+      Stylist testStylist = new Stylist("Peter");
       testStylist.Save();
 
       Specialty testSpecialty = new Specialty("Color");

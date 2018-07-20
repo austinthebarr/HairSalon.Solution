@@ -13,9 +13,9 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylist/add")]
-    public ActionResult Submit(string newName, string newSpecialty)
+    public ActionResult Submit(string newName)
     {
-      Stylist newStylist = new Stylist(newName, newSpecialty);
+      Stylist newStylist = new Stylist(newName);
       newStylist.Save();
       return RedirectToAction("Index");
     }
