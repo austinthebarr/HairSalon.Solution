@@ -84,6 +84,25 @@ namespace HairSalon.Tests
       Assert.AreEqual(foundClient, secondClient);
     }
 
+    [TestMethod]
+    public void CanIDeleteaSpecificClientbyID()
+    {
+      //Arrange
+      Client newClient1 = new Client("Phillip", 2);
+      newClient1.Save();
+      Client newClient2 = new Client("Gregory", 2);
+      newClient2.Save();
+      Assert.IsTrue(Client.GetAll().Count == 2);
+
+      //Act
+      newClient1.DeleteClient();
+      List<Client> expectedList = new List<Client> {newClient2};
+
+      //Assert
+      List<Client> outputList = Client.GetAll();
+      Assert.IsTrue(outputList.Count == 1);
+      CollectionAssert.AreEqual(expectedList, outputList);
+    }
 
     public void Dispose()
       {
