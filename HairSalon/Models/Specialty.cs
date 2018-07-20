@@ -152,5 +152,64 @@ namespace HairSalon.Models
       }
       return newSpecialty;
     }
+
+    public List<Stylist> GetStylist()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT stylists.* FROM specialties
+      JOIN specialties_stylists ON (specialty.id = specialties_stylists.specialty_id)
+      JOIN stylists ON (specialties_stylists.stylist_id = stylists.id)
+      WHERE specialties.id = @SpecialtyId;";
+
+      MySqlParameter specialty_idIdParameter = new MySqlParameter();
+      specialty_idIdParameter.ParameterName = "@SpecialtyId";
+      specialty_idIdParameter.Value = _id;
+      cmd.Parameters.Add(specialty_idIdParameter);
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      List<Stylist> stylists = new List<Stylist>{};
+
+      while(rdr.Read())
+      {
+        int stylistid = rdr.GetInt32(0);
+        string stylistName = rdr.GetString(1);
+        Stylist newStylist = new Stylist(stylistName, stylistid);
+        stylists.Add(newStylist);
+      }
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return stylists;
+    }
+
+    public void AddStylist(Stylist newStylist)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO specialties_stylists (specialty_id, stylist_id) VALUES (@SpecialtyId, @StylistId);";
+
+      MySqlParameter specialty_id = new MySqlParameter();
+      specialty_id.ParameterName = "@SpecialtyId";
+      specialty_id.Value = _id;
+      cmd.Parameters.Add(specialty_id);
+
+      MySqlParameter stylist_id = new MySqlParameter();
+      stylist_id.ParameterName = "@StylistId";
+      stylist_id.Value = newStylist.GetId();
+      cmd.Parameters.Add(stylist_id);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
   }
 }
