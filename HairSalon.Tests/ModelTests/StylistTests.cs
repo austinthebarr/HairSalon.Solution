@@ -144,28 +144,6 @@ namespace HairSalon.Tests
       CollectionAssert.AreEqual(testList, result);
     }
 
-    // [TestMethod]
-    // public void GetCategories_ReturnsAllStylistsCategories_CategoryList()
-    // {
-    //   //Arrange
-    //   Item testItem = new Item("Mow the lawn", "today");
-    //   testItem.Save();
-    //
-    //   Category testCategory1 = new Category("Home Stuff");
-    //   testCategory1.Save();
-    //
-    //   Category testCategory2 = new Category("Work stuff");
-    //   testCategory2.Save();
-    //
-    //   //Act
-    //   testItem.AddCategory(testCategory1);
-    //   List<Category> result = testItem.GetCategories();
-    //   List<Category> testList = new List<Category> {testCategory1};
-    //
-    //   //Assert
-    //
-    //   CollectionAssert.AreEqual(testList, result);
-    // }
   public void Dispose()
     {
       Stylist.DeleteAll();

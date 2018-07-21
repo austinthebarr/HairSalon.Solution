@@ -72,6 +72,15 @@ namespace HairSalon.Controllers
       Stylist thisStylist = Stylist.Find(id);
       return View(thisStylist);
     }
+
+    [HttpPost("/stylist/{id}/info")]
+    public ActionResult Update(int id)
+    {
+      Stylist thisStylist = Stylist.Find(id);
+      thisStylist.Edit(Request.Form["newName"]);
+      return RedirectToAction("Index");
+    }
+
     [HttpGet("/stylist/{id}/specialty")]
       public ActionResult specialty(int id)
     {
@@ -85,45 +94,14 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    [HttpPost("/stylist/{id}/info/specialties/new")]
-    public ActionResult AddSpecialty(int stylistId)
+    [HttpPost("/stylist/{id}/specialties/new")]
+    public ActionResult AddSpecialty(int id)
     {
-      Stylist stylist = Stylist.Find(stylistId);
+      Stylist stylist = Stylist.Find(id);
       Specialty specialty = Specialty.Find(Int32.Parse(Request.Form["specialty-id"]));
       stylist.AddSpecialty(specialty);
-      return RedirectToAction("index", new {id = stylistId});
-    }
-
-    [HttpPost("/stylist/{id}/info")]
-    public ActionResult Update(int id)
-    {
-      Stylist thisStylist = Stylist.Find(id);
-      thisStylist.Edit(Request.Form["newName"]);
       return RedirectToAction("Index");
     }
-
-    // [HttpGet("/stylist/{id}")]
-    // public ActionResult Specialty(int id)
-    // {
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   Stylist selectedStylist = Stylist.Find(id);
-    //   List<Specialty> stylistSpecialties = selectedStylist.GetSpecialties();
-    //   List<Specialty> allSpecialties = Specialty.GetAll();
-    //   model.Add("selectedStylist", selectedStylist);
-    //   model.Add("stylistSpecialties", stylistSpecialties);
-    //   model.Add("allSpecialties", allSpecialties);
-    //   return View(model);
-    // }
-    //
-    // [HttpPost("/stylist/{stylistId}/specialties/new")]
-    // public ActionResult AddSpecialty(int stylistId)
-    // {
-    //   Stylist stylist = Stylist.Find(stylistId);
-    //   Specialty specialty = Specialty.Find(Int32.Parse(Request.Form["specialty-id"]));
-    //   stylist.AddSpecialty(specialty);
-    //   return RedirectToAction("Details", new {id = itemId});
-    // }
-
 
   }
 }

@@ -10,13 +10,13 @@
     }
   </ul>
 }
-<h4>Add a Specialty to this Stylist:</h4>
-<form action='/items/@Model["selectedStylist"].GetId()/specialties/new' method='post'>
+<h4>Add a Specialty to this Stylist:@Model["selectedStylist"].GetName()</h4>
+<form action='/stylist/@Model["selectedStylist"].GetId()/specialties/new' method='post'>
   <label for='specialty-id'>Select a category</label>
   <select id='specialty-id' name='specialty-id' type='text'>
-    @foreach (var specialty in @Model["allSpecialties"])
+    @foreach (var specialty in Model["allSpecialties"])
     {
-      <option value='@specialty.GetId()'>@specialty.GetDescription()</option>
+      <option value="@specialty.GetId()">@specialty.GetDescription()</option>
     }
   </select>
   <button type='submit'>Add</button>
