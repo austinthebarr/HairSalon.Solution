@@ -25,6 +25,14 @@ A web app, built with C#, that allows user to store and retrieve data about styl
  CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
  ```
 
+ ```
+ CREATE TABLE specialties (id serial PRIMARY KEY, name VARCHAR(255));
+ ```
+
+ ```
+ CREATE TABLE specialties_stylists (id serial PRIMARY KEY, specialty_id INT, stylist_id INT);
+ ```
+
 
 3. Optional - to allow for testing, run the following SQL commands as well:
 
@@ -72,7 +80,11 @@ A web app, built with C#, that allows user to store and retrieve data about styl
 
 3. When clicking "Add a new Client", user is routed to a form through which the new stylist can be added to the database with a Stylist.
 
-4. When clicking "View Stylists", user can see what stylists are present and has a link to view which clients the have.
+4. When clicking "Add a new Specialty", user is routed to a form through which the new Specialty can be added to the database.
+
+5. When clicking "View Specialty", user can see what specialties are present and has a link to view which stylists they have.
+
+5. When clicking "View stylist", user can see what specialties are present and has a link to view which clients the have.
 
 ### Technologies Used
 
